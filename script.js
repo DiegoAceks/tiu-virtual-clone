@@ -1,30 +1,86 @@
-// ====== Datos de la demostración ======
+
+"use strict";
+
+// Datos de demostración
 const DATOS = {
   nombre: "ADRÍAN ARAM H*** G***",
   codigo: "202514843",
   banner: "N0537159",
-  carrera: "Ingeniería de Software",
-  campus: "Campus San Miguel",
+  carrera: "INGENIERÍA DE SOFTWARE",
+  campus: "Campus San Miguel"
 };
-// ======================================
 
-const DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-const MESES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
-const pad = (n) => String(n).padStart(2, "0");
+const DIAS = [
+  "Domingo",
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado"
+];
 
-function tick() {
-  const d = new Date();
-  document.getElementById("clock").textContent =
-    `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-  document.getElementById("date").textContent =
-    `${DIAS[d.getDay()]}, ${d.getDate()} ${MESES[d.getMonth()]} ${d.getFullYear()}`;
+const MESES = [
+  "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+];
+
+const pad = numero => String(numero).padStart(2, "0");
+
+function actualizarDatos() {
+  const campos = {
+    nombre: DATOS.nombre,
+    codigo: DATOS.codigo,
+    banner: DATOS.banner,
+    carrera: DATOS.carrera,
+    campus: DATOS.campus
+  };
+
+  for (const [id, valor] of Object.entries(campos)) {
+    const elemento = document.getElementById(id);
+
+    if (elemento) {
+      elemento.textContent = valor;
+    } else {
+      console.warn(`No se encontró el elemento HTML: #${id}`);
+    }
+  }
 }
 
-document.getElementById("nombre").textContent = DATOS.nombre;
-document.getElementById("codigo").textContent = DATOS.codigo;
-document.getElementById("banner").textContent = DATOS.banner;
-document.getElementById("carrera").textContent = DATOS.carrera;
-document.getElementById("campus").textContent = DATOS.campus;
+function actualizarReloj() {
+  const ahora = new Date();
 
-tick();
-setInterval(tick, 1000);
+  const reloj = document.getElementById("clock");
+  const fecha = document.getElementById("date");
+
+  if (reloj) {
+    reloj.textContent =
+      `${pad(ahora.getHours())}:` +
+      `${pad(ahora.getMinutes())}:` +
+      `${pad(ahora.getSeconds())}`;
+  }
+
+  if (fecha) {
+    fecha.textContent =
+      `${DIAS[ahora.getDay()]}, ` +
+      `${ahora.getDate()} ` +
+      `${MESES[ahora.getMonth()]} ` +
+      `${ahora.getFullYear()}`;
+  }
+}
+
+function iniciarDemostracion() {
+  actualizarDatos();
+  actualizarReloj();
+  window.setInterval(actualizarReloj, 1000);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    iniciarDemostracion,
+    { once: true }
+  );
+} else {
+  iniciarDemostracion();
+}
