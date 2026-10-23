@@ -1,12 +1,12 @@
-// ====== Datos de ejemplo: cámbialos por los que quieras mostrar en tu demo ======
+// ====== Datos de la demostración ======
 const DATOS = {
-  nombre: "NOMBRE APELLIDO*** APELLIDO***",
-  codigo: "202400000",
-  banner: "N00000000",
+  nombre: "ADRÍAN ARAM H*** G***",
+  codigo: "202514843",
+  banner: "N0537159",
   carrera: "Ingeniería de Software",
   campus: "Campus San Miguel",
 };
-// =================================================================================
+// ======================================
 
 const DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 const MESES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
