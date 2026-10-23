@@ -13,3 +13,4 @@ Edita el objeto `DATOS` al inicio de `script.js`.
 ## Publicar en GitHub Pages
 1. Sube la carpeta a un repositorio.
 2. Settings → Pages → Branch `main` → carpeta `/ (root)` → Save.
+
